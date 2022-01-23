@@ -122,10 +122,11 @@
         >
 
         <ToggleButton
-            android:id="@+id/btn_white"
+            android:id="@+id/btn_transparent"
             style="@style/tb_background_color"
-            android:backgroundTint="@color/white"
-            android:checked="false" />
+            android:backgroundTint="@color/transparent"
+            android:checked="true"
+            android:drawableBottom="@drawable/ic_no_color" />
 
         <ToggleButton
             android:id="@+id/btn_yellow"

@@ -9,4 +9,8 @@
     <string name="label_date">Data</string>
     <string name="label_hour">Hora</string>
     <string name="label_cancel">Cancelar</string>
+    <string name="dialog_title">Descartar alterações?</string>
+    <string name="dialog_message">Deseja voltar e descartar as alterações realizadas?</string>
+    <string name="dialog_positive">Sim</string>
+    <string name="dialog_negative">Não</string>
 </resources>
