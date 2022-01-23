@@ -11,12 +11,22 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val viewModel by viewModel<MainViewModel>()
+    private val adapter by lazy { TaskListAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        binding.rvList.adapter = adapter
+
+        getAllTasks()
         setListeners()
+    }
+
+    private fun getAllTasks() {
+        viewModel.getAllTasks().observe(this){ taskList ->
+            adapter.submitList(taskList)
+        }
     }
 
     private fun setListeners() {

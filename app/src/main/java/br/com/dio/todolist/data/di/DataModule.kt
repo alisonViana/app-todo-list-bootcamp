@@ -10,14 +10,14 @@ import org.koin.dsl.module
 object DataModule {
 
     fun load(){
-        loadKoinModules(repositoriesModule()
+        loadKoinModules(repositoriesModules()
         + daoModules())
     }
 
     // single - o koin devolve sempre a mesma instância
     // factory - o koin devolve uma instância nova a cada chamada
 
-    private fun repositoriesModule(): Module {
+    private fun repositoriesModules(): Module {
         return module {
             single { TaskRepository(get()) }
         }
