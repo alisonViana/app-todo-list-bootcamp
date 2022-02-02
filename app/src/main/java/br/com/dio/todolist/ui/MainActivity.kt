@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun setListeners() {
         binding.fabNewTask.setOnClickListener {
             Intent(this, DetailActivity::class.java).apply {
+                addCategory("NEW_TASK")
                 startActivity(this)
             }
         }

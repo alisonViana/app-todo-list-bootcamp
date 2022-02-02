@@ -30,6 +30,7 @@ class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBac
             binding.tvDescription.text = item.description
             binding.tvDate.text = item.date
             binding.tvHour.text = item.hour
+            binding.root.setCardBackgroundColor(item.backgroundColor)
         }
     }
 

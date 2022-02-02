@@ -13,4 +13,6 @@
     <string name="dialog_message">Deseja voltar e descartar as alterações realizadas?</string>
     <string name="dialog_positive">Sim</string>
     <string name="dialog_negative">Não</string>
+    <string name="snackbar_dismiss">OK</string>
+    <string name="snackbar_message">A tarefa precisa ter um título ou uma descrição.</string>
 </resources>
