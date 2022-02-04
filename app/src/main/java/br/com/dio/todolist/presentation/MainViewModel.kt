@@ -12,4 +12,8 @@ class MainViewModel(
     fun getAllTasks(): LiveData<List<Task>>{
         return taskRepository.getAll()
     }
+
+    fun deleteTask(task: Task) {
+        taskRepository.delete(task)
+    }
 }

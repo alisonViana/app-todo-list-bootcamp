@@ -2,7 +2,6 @@ package br.com.dio.todolist.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import br.com.dio.todolist.R
@@ -113,8 +112,8 @@ class DetailActivity : AppCompatActivity() {
 
             finishActivity(true)
         } else {
-            Snackbar.make(binding.btnSave, R.string.snackbar_message, Snackbar.LENGTH_SHORT)
-                .setAction(R.string.snackbar_dismiss){}
+            Snackbar.make(binding.btnSave, R.string.snackbar_blank_message, Snackbar.LENGTH_SHORT)
+                .setAction(R.string.label_ok){}
                 .show()
         }
     }
@@ -127,12 +126,12 @@ class DetailActivity : AppCompatActivity() {
 
         if (!savedTask) {
             AlertDialog.Builder(this).apply {
-                setPositiveButton(getString(R.string.dialog_positive)){_, _ ->
+                setPositiveButton(getString(R.string.label_yes)){ _, _ ->
                     finish()
                 }
-                setNegativeButton(getString(R.string.dialog_negative), null)
-                setTitle(getString(R.string.dialog_title))
-                setMessage(getString(R.string.dialog_message))
+                setNegativeButton(getString(R.string.label_no), null)
+                setTitle(getString(R.string.dialog_discard_title))
+                setMessage(getString(R.string.dialog_discard_message))
             }.show()
         } else {
             Toast.makeText(this, "Tarefa criada!", Toast.LENGTH_SHORT).show()

@@ -1,6 +1,7 @@
 package br.com.dio.todolist.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -9,6 +10,8 @@ import br.com.dio.todolist.data.model.Task
 import br.com.dio.todolist.databinding.ItemTaskBinding
 
 class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBackTask()){
+
+    var setOnMenuClick: (View, Task) -> Unit = {_, _ ->}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskListAdapter.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -31,6 +34,10 @@ class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBac
             binding.tvDate.text = item.date
             binding.tvHour.text = item.hour
             binding.root.setCardBackgroundColor(item.backgroundColor)
+
+            binding.btnMenu.setOnClickListener { view ->
+                setOnMenuClick(view, item)
+            }
         }
     }
 

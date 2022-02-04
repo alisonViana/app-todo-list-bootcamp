@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
     app:cardCornerRadius="16dp"
-    app:cardElevation="4dp"
-    android:layout_margin="4dp">
+    app:cardElevation="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,14 +17,27 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@id/btn_menu"
             android:ellipsize="end"
+            android:maxLines="1"
             android:textStyle="bold"
-            tools:text="Hello World"
+            tools:text="Hello World" />
+
+        <ImageButton
+            android:id="@+id/btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_title"
+            app:layout_constraintTop_toTopOf="@id/tv_title"
+            android:src="@drawable/ic_menu"
+            android:background="?attr/actionBarItemBackground"
+            android:contentDescription="@string/description_btn_menu"
             />
 
         <TextView
@@ -43,6 +58,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_description"
+            android:layout_marginTop="4dp"
             android:textSize="12sp"
             tools:text="15/05/2022"
             />
@@ -52,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/tv_date"
-            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            app:layout_constraintTop_toTopOf="@id/tv_date"
             android:layout_marginStart="8dp"
             android:textSize="12sp"
             tools:text="20:00"
