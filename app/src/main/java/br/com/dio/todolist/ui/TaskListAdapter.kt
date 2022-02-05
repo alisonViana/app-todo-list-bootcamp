@@ -12,6 +12,7 @@ import br.com.dio.todolist.databinding.ItemTaskBinding
 class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBackTask()){
 
     var setOnMenuClick: (View, Task) -> Unit = {_, _ ->}
+    var setOnCardClick: (Task) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskListAdapter.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -38,6 +39,7 @@ class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBac
             binding.btnMenu.setOnClickListener { view ->
                 setOnMenuClick(view, item)
             }
+            binding.root.setOnClickListener { setOnCardClick(item) }
         }
     }
 

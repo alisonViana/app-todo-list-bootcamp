@@ -45,6 +45,9 @@ class MainActivity : AppCompatActivity() {
         adapter.setOnMenuClick = { view, task ->
             showMenu(view, R.menu.menu_task, task)
         }
+        adapter.setOnCardClick = { task ->
+            editTask(task)
+        }
 
     }
 
@@ -55,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
                 R.id.menu_item_edit -> {
-                    Log.i("myTag", "Click: Edit")
+                    editTask(task)
                     true
                 }
                 R.id.menu_item_delete -> {
@@ -67,6 +70,14 @@ class MainActivity : AppCompatActivity() {
         }
         popupMenu.show()
 
+    }
+
+    private fun editTask(task: Task) {
+        Intent(this, DetailActivity::class.java).apply {
+            addCategory("EDIT_TASK")
+            putExtra("TASK_TO_EDIT", task)
+            startActivity(this)
+        }
     }
 
     private fun deleteTask(task: Task) {

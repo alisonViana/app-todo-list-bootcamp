@@ -33,8 +33,21 @@ class DetailActivity : AppCompatActivity() {
     private fun getCategory() {
         if (intent.hasCategory("EDIT_TASK")) {
             viewModel.setNewTaskCategory(false)
-            //Set the views with task information
+            setTaskValues()
         } else viewModel.setNewTaskCategory(true)
+    }
+
+    private fun setTaskValues() {
+        val task = intent.getParcelableExtra<Task>("TASK_TO_EDIT")
+
+        viewModel.taskId = task!!.id
+
+        binding.tilTitle.text = task.title
+        binding.tilDescription.text = task.description
+        binding.tilDate.text = task.date
+        binding.tilHour.text = task.hour
+        selectBackgroundColor(task.backgroundColor, false)
+
     }
 
     private fun setListeners() {
@@ -74,19 +87,23 @@ class DetailActivity : AppCompatActivity() {
         timerPicker.show(supportFragmentManager, "TIME_PICKER_TAG")
     }
 
-    private fun selectBackgroundColor(color: Int) {
+    private fun selectBackgroundColor(color: Int, colorRes: Boolean = true) {
         uncheckAll()
-        when (color) {
-            R.color.transparent -> binding.btnTransparent.isChecked = true
-            R.color.yellow -> binding.btnYellow.isChecked = true
-            R.color.green -> binding.btnGreen.isChecked = true
-            R.color.blue -> binding.btnBlue.isChecked = true
-            R.color.red -> binding.btnRed.isChecked = true
+
+        val colorInt = if (colorRes) getColor(color) else color
+
+        when (colorInt) {
+            getColor(R.color.transparent) -> binding.btnTransparent.isChecked = true
+            getColor(R.color.yellow) -> binding.btnYellow.isChecked = true
+            getColor(R.color.green) -> binding.btnGreen.isChecked = true
+            getColor(R.color.blue) -> binding.btnBlue.isChecked = true
+            getColor(R.color.red) -> binding.btnRed.isChecked = true
         }
-        binding.tilTitle.boxBackgroundColor = getColor(color)
-        binding.tilDescription.boxBackgroundColor = getColor(color)
-        binding.tilDate.boxBackgroundColor = getColor(color)
-        binding.tilHour.boxBackgroundColor = getColor(color)
+
+        binding.tilTitle.boxBackgroundColor = colorInt
+        binding.tilDescription.boxBackgroundColor = colorInt
+        binding.tilDate.boxBackgroundColor = colorInt
+        binding.tilHour.boxBackgroundColor = colorInt
     }
 
     private fun uncheckAll() {
@@ -100,6 +117,7 @@ class DetailActivity : AppCompatActivity() {
     private fun saveTask() {
         if (binding.tilTitle.text.isNotBlank() or binding.tilDescription.text.isNotBlank()) {
             val task = Task(
+                id = if (!viewModel.isNewTaskCategory()) viewModel.taskId else 0,
                 title = binding.tilTitle.text,
                 description = binding.tilDescription.text,
                 hour = binding.tilHour.text,
@@ -108,8 +126,8 @@ class DetailActivity : AppCompatActivity() {
             )
 
             if (viewModel.isNewTaskCategory()) viewModel.addTask(task)
-            //else: edit task
-
+            else viewModel.updateTask(task)
+            
             finishActivity(true)
         } else {
             Snackbar.make(binding.btnSave, R.string.snackbar_blank_message, Snackbar.LENGTH_SHORT)

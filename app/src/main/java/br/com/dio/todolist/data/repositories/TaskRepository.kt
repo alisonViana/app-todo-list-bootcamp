@@ -8,9 +8,25 @@ import kotlinx.coroutines.runBlocking
 
 class TaskRepository(private val dao: TaskDao) {
 
+    fun getAll() = dao.getAll()
+
+    suspend fun insert(task: Task) {
+        dao.insert(task)
+    }
+
+    suspend fun delete(task: Task) {
+        dao.delete(task)
+    }
+
+    suspend fun update(task: Task) {
+        dao.update(task)
+    }
+
+    /*
     fun getAll() = runBlocking {
         dao.getAll()
     }
+
 
     fun insert(task: Task) = runBlocking {
         launch(Dispatchers.IO) {
@@ -31,5 +47,10 @@ class TaskRepository(private val dao: TaskDao) {
             }
         }
     }
+
+    fun update(task: Task) = runBlocking {
+        launch(Dispatchers.IO) {  }
+    }
+     */
 
 }

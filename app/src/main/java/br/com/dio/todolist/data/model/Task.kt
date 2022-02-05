@@ -1,10 +1,12 @@
 package br.com.dio.todolist.data.model
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.io.StringBufferInputStream
+import kotlinx.parcelize.Parcelize
 
 @Entity
+@Parcelize
 data class Task(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,
@@ -12,4 +14,4 @@ data class Task(
     val date: String,
     val hour: String,
     val backgroundColor: Int
-)
+): Parcelable
