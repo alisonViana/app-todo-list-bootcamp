@@ -13,5 +13,5 @@ data class Task(
     val description: String,
     val date: String,
     val hour: String,
-    val backgroundColor: Int
+    val backgroundColor: String
 ): Parcelable

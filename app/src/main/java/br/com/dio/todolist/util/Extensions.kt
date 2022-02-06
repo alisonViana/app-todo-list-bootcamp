@@ -1,5 +1,6 @@
 package br.com.dio.todolist.util
 
+import br.com.dio.todolist.R
 import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,4 +18,14 @@ fun Date.formatDate(): String {
     val pattern = if (country == "BR") "dd/MM/yyyy" else "yyyy/MM/dd"
 
     return SimpleDateFormat(pattern, locale).format(this)
+}
+
+fun String.getRes(): Int {
+    return when (this) {
+        "yellow" -> R.color.yellow
+        //"green" -> R.color.green
+        //"blue" -> R.color.blue
+        //"red" -> R.color.red
+        else -> R.color.transparent
+    }
 }

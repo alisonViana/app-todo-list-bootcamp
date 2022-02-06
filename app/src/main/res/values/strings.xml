@@ -23,6 +23,7 @@
     <string name="dialog_discard_message">Deseja voltar e descartar as alterações realizadas?</string>
     <string name="dialog_delete_message">Deseja excluir esta tarefa?</string>
     <string name="snackbar_blank_message">A tarefa precisa ter um título ou uma descrição.</string>
+    <string name="toast_saved_task_message">Tarefa salva!</string>
 
     <!-- Description -->
     <string name="description_btn_menu">menu button</string>

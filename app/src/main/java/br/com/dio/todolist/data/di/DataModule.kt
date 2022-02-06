@@ -28,4 +28,5 @@ object DataModule {
             single { TaskDatabase.getInstance(androidContext()).taskDao}
         }
     }
+
 }

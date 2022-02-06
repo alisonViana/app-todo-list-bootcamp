@@ -12,6 +12,7 @@ class DetailViewModel(
 
     private var newTaskCategory: Boolean = true
     var taskId: Int = 0
+    var backgroundColor: String = ""
 
     fun setNewTaskCategory(isNewTask: Boolean) { newTaskCategory = isNewTask }
     fun isNewTaskCategory() = newTaskCategory

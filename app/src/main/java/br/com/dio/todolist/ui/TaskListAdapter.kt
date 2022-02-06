@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import br.com.dio.todolist.App
 import br.com.dio.todolist.data.model.Task
 import br.com.dio.todolist.databinding.ItemTaskBinding
+
 
 class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBackTask()){
 
@@ -30,11 +32,14 @@ class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBac
     ): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Task){
+
             binding.tvTitle.text = item.title
             binding.tvDescription.text = item.description
             binding.tvDate.text = item.date
             binding.tvHour.text = item.hour
-            binding.root.setCardBackgroundColor(item.backgroundColor)
+
+            val backgroundColor = App().getColorUtil.getColorFromString(item.backgroundColor)
+            binding.root.setCardBackgroundColor(backgroundColor)
 
             binding.btnMenu.setOnClickListener { view ->
                 setOnMenuClick(view, item)

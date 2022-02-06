@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.DetailActivity">
+    tools:context=".ui.DetailActivity"
+    android:id="@+id/layout_detail"
+    tools:background="@color/yellow"
+    >
 
    <androidx.constraintlayout.widget.Guideline
        android:id="@+id/guideline_start"
@@ -55,7 +58,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_description"
         android:layout_width="0dp"
-        android:layout_height="128dp"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
         app:layout_constraintTop_toBottomOf="@id/til_title"
@@ -75,14 +78,13 @@
         android:id="@+id/til_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/guideline_start"
-        app:layout_constraintEnd_toStartOf="@id/til_hour"
-        app:layout_constraintTop_toBottomOf="@id/til_description"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
         android:hint="@string/label_date"
-        app:startIconDrawable="@drawable/ic_calendar"
-        >
+        app:layout_constraintBottom_toTopOf="@+id/layout_color_picker"
+        app:layout_constraintEnd_toStartOf="@id/til_hour"
+        app:layout_constraintStart_toStartOf="@id/guideline_start"
+        app:startIconDrawable="@drawable/ic_calendar">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -113,12 +115,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
+        android:id="@+id/layout_color_picker"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="@id/guideline_start"
         app:layout_constraintEnd_toEndOf="@id/guideline_end"
-        app:layout_constraintTop_toBottomOf="@id/til_date"
-        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_save"
+        android:layout_marginBottom="16dp"
         android:padding="8dp"
         android:orientation="horizontal"
         android:gravity="center"
@@ -135,8 +138,7 @@
             android:id="@+id/btn_yellow"
             style="@style/tb_background_color"
             android:backgroundTint="@color/yellow"
-            android:checked="false"
-            tools:checked="false" />
+            android:checked="false" />
 
         <ToggleButton
             android:id="@+id/btn_green"

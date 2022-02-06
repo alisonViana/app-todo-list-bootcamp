@@ -8,12 +8,15 @@ import br.com.dio.todolist.R
 import br.com.dio.todolist.data.model.Task
 import br.com.dio.todolist.databinding.ActivityDetailBinding
 import br.com.dio.todolist.presentation.DetailViewModel
+import br.com.dio.todolist.util.Colors
+import br.com.dio.todolist.util.GetColorUtil
 import br.com.dio.todolist.util.formatDate
 import br.com.dio.todolist.util.text
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat.CLOCK_24H
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -21,6 +24,7 @@ class DetailActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
     private val viewModel by viewModel<DetailViewModel>()
+    private val getColorUtil: GetColorUtil by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +50,7 @@ class DetailActivity : AppCompatActivity() {
         binding.tilDescription.text = task.description
         binding.tilDate.text = task.date
         binding.tilHour.text = task.hour
-        selectBackgroundColor(task.backgroundColor, false)
+        selectBackgroundColor(task.backgroundColor)
 
     }
 
@@ -56,11 +60,11 @@ class DetailActivity : AppCompatActivity() {
         binding.tilDate.editText?.setOnClickListener { pickDate() }
         binding.tilHour.editText?.setOnClickListener { pickHour() }
 
-        binding.btnTransparent.setOnClickListener { selectBackgroundColor(R.color.transparent) }
-        binding.btnYellow.setOnClickListener { selectBackgroundColor(R.color.yellow) }
-        binding.btnGreen.setOnClickListener { selectBackgroundColor(R.color.green) }
-        binding.btnBlue.setOnClickListener { selectBackgroundColor(R.color.blue) }
-        binding.btnRed.setOnClickListener { selectBackgroundColor(R.color.red) }
+        binding.btnTransparent.setOnClickListener { selectBackgroundColor(Colors.Transparent.string) }
+        binding.btnYellow.setOnClickListener { selectBackgroundColor(Colors.Yellow.string) }
+        binding.btnGreen.setOnClickListener { selectBackgroundColor(Colors.Green.string) }
+        binding.btnBlue.setOnClickListener { selectBackgroundColor(Colors.Blue.string) }
+        binding.btnRed.setOnClickListener { selectBackgroundColor(Colors.Red.string) }
 
         binding.btnSave.setOnClickListener { saveTask() }
         binding.btnCancel.setOnClickListener { finishActivity() }
@@ -87,23 +91,20 @@ class DetailActivity : AppCompatActivity() {
         timerPicker.show(supportFragmentManager, "TIME_PICKER_TAG")
     }
 
-    private fun selectBackgroundColor(color: Int, colorRes: Boolean = true) {
+    private fun selectBackgroundColor(color: String) {
         uncheckAll()
+        viewModel.backgroundColor = color
 
-        val colorInt = if (colorRes) getColor(color) else color
-
-        when (colorInt) {
-            getColor(R.color.transparent) -> binding.btnTransparent.isChecked = true
-            getColor(R.color.yellow) -> binding.btnYellow.isChecked = true
-            getColor(R.color.green) -> binding.btnGreen.isChecked = true
-            getColor(R.color.blue) -> binding.btnBlue.isChecked = true
-            getColor(R.color.red) -> binding.btnRed.isChecked = true
+        when (color) {
+            Colors.Transparent.string -> binding.btnTransparent.isChecked = true
+            Colors.Yellow.string -> binding.btnYellow.isChecked = true
+            Colors.Green.string -> binding.btnGreen.isChecked = true
+            Colors.Blue.string -> binding.btnBlue.isChecked = true
+            Colors.Red.string -> binding.btnRed.isChecked = true
         }
 
-        binding.tilTitle.boxBackgroundColor = colorInt
-        binding.tilDescription.boxBackgroundColor = colorInt
-        binding.tilDate.boxBackgroundColor = colorInt
-        binding.tilHour.boxBackgroundColor = colorInt
+        val colorInt = getColorUtil.getColorFromString(color)
+        binding.root.setBackgroundColor(colorInt)
     }
 
     private fun uncheckAll() {
@@ -122,7 +123,7 @@ class DetailActivity : AppCompatActivity() {
                 description = binding.tilDescription.text,
                 hour = binding.tilHour.text,
                 date = binding.tilDate.text,
-                backgroundColor = binding.tilTitle.boxBackgroundColor
+                backgroundColor = viewModel.backgroundColor
             )
 
             if (viewModel.isNewTaskCategory()) viewModel.addTask(task)
@@ -152,7 +153,7 @@ class DetailActivity : AppCompatActivity() {
                 setMessage(getString(R.string.dialog_discard_message))
             }.show()
         } else {
-            Toast.makeText(this, "Tarefa criada!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, R.string.toast_saved_task_message, Toast.LENGTH_SHORT).show()
             finish()
         }
 
