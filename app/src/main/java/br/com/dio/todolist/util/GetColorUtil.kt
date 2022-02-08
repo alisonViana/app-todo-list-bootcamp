@@ -2,6 +2,7 @@ package br.com.dio.todolist.util
 
 import android.content.Context
 import br.com.dio.todolist.R
+import br.com.dio.todolist.data.model.Colors
 
 class GetColorUtil(private val context: Context) {
 

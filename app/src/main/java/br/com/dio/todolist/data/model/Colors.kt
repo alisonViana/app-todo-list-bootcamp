@@ -1,4 +1,4 @@
-package br.com.dio.todolist.util
+package br.com.dio.todolist.data.model
 
 enum class Colors(val string: String) {
     Transparent("transparent"),

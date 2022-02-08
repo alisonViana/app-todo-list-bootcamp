@@ -11,7 +11,7 @@ import br.com.dio.todolist.R
 import br.com.dio.todolist.data.model.Task
 import br.com.dio.todolist.databinding.ActivityMainBinding
 import br.com.dio.todolist.presentation.MainViewModel
-import br.com.dio.todolist.util.Colors
+import br.com.dio.todolist.data.model.Colors
 import br.com.dio.todolist.util.GetColorUtil
 import br.com.dio.todolist.util.showWithIcons
 import org.koin.android.ext.android.inject

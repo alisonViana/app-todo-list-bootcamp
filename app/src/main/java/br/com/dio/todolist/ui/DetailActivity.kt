@@ -9,7 +9,7 @@ import br.com.dio.todolist.R
 import br.com.dio.todolist.data.model.Task
 import br.com.dio.todolist.databinding.ActivityDetailBinding
 import br.com.dio.todolist.presentation.DetailViewModel
-import br.com.dio.todolist.util.Colors
+import br.com.dio.todolist.data.model.Colors
 import br.com.dio.todolist.util.GetColorUtil
 import br.com.dio.todolist.util.formatDate
 import br.com.dio.todolist.util.text
