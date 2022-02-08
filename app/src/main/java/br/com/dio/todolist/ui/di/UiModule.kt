@@ -1,20 +1,21 @@
-package br.com.dio.todolist.util.di
+package br.com.dio.todolist.ui.di
 
+import br.com.dio.todolist.ui.TaskListAdapter
 import br.com.dio.todolist.util.GetColorUtil
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-object UtilModule {
+object UiModule {
 
     fun load(){
-        loadKoinModules(colorUtilModules())
+        loadKoinModules(listAdapterModules())
     }
 
-    private fun colorUtilModules(): Module {
+    private fun listAdapterModules(): Module {
         return module {
             factory {
-                GetColorUtil(context = get())
+                TaskListAdapter(get())
             }
         }
     }

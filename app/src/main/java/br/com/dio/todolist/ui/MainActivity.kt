@@ -14,13 +14,15 @@ import br.com.dio.todolist.presentation.MainViewModel
 import br.com.dio.todolist.util.Colors
 import br.com.dio.todolist.util.GetColorUtil
 import br.com.dio.todolist.util.showWithIcons
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val viewModel by viewModel<MainViewModel>()
-    private val adapter by lazy { TaskListAdapter() }
+    private val taskListAdapter: TaskListAdapter by inject()
+    private val adapter by lazy { taskListAdapter }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

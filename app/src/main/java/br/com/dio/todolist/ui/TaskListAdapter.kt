@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import br.com.dio.todolist.App
 import br.com.dio.todolist.data.model.Task
 import br.com.dio.todolist.databinding.ItemTaskBinding
+import br.com.dio.todolist.util.GetColorUtil
 
 
-class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBackTask()){
+class TaskListAdapter(
+    private val getColorUtil: GetColorUtil
+): ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBackTask()){
 
     var setOnMenuClick: (View, Task) -> Unit = {_, _ ->}
     var setOnCardClick: (Task) -> Unit = {}
@@ -28,7 +30,8 @@ class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBac
     }
 
     inner class ViewHolder(
-        private val binding: ItemTaskBinding
+        private val binding: ItemTaskBinding,
+
     ): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Task){
@@ -38,7 +41,7 @@ class TaskListAdapter: ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBac
             binding.tvDate.text = item.date
             binding.tvHour.text = item.hour
 
-            val backgroundColor = App().getColorUtil.getColorFromString(item.backgroundColor)
+            val backgroundColor = getColorUtil.getColorFromString(item.backgroundColor)
             binding.root.setCardBackgroundColor(backgroundColor)
 
             binding.btnMenu.setOnClickListener { view ->
