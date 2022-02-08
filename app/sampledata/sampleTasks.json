@@ -1,0 +1,87 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Passear com o cachorro",
+      "description": "Bob precisa fazer mais exercícios!",
+      "date": "06/02/2022",
+      "hour": "18:00",
+      "backgroundColor": "#FFCF14"
+    },
+    {
+      "id": 2,
+      "title": "Finalizar o Bootcamp",
+      "description": "Preciso entregar os projetos para finalizar mais um bootcamp da DIO",
+      "date": "09/02/2022",
+      "hour": "23:00",
+      "backgroundColor": "#00EB4C"
+    },
+    {
+      "id": 3,
+      "title": "Tirar o lixo",
+      "description": "O caminhão de lixo passa de seg., qua. e sab.",
+      "date": "07/02/2022",
+      "hour": "15:00",
+      "backgroundColor": "#2442ED"
+    },
+    {
+      "id": 4,
+      "title": "Início das aulas de música",
+      "description": "Aulas de guitarra",
+      "date": "12/02/2022",
+      "hour": "07:45",
+      "backgroundColor": "#E81613"
+    },
+    {
+      "id": 5,
+      "title": "Comprar pão",
+      "description": "Padaria do Joaquim",
+      "date": "24/03/2022",
+      "hour": "05:00",
+      "backgroundColor": "#FFFFFF"
+    }
+  ],
+
+  "tasks_night": [
+    {
+      "id": 1,
+      "title": "Passear com o cachorro",
+      "description": "Bob precisa fazer mais exercícios!",
+      "date": "06/02/2022",
+      "hour": "18:00",
+      "backgroundColor": "#FFCF14"
+    },
+    {
+      "id": 2,
+      "title": "Finalizar o Bootcamp",
+      "description": "Preciso entregar os projetos para finalizar mais um bootcamp da DIO",
+      "date": "09/02/2022",
+      "hour": "23:00",
+      "backgroundColor": "#00EB4C"
+    },
+    {
+      "id": 3,
+      "title": "Tirar o lixo",
+      "description": "O caminhão de lixo passa de seg., qua. e sab.",
+      "date": "",
+      "hour": "",
+      "backgroundColor": "#2C37F5"
+    },
+    {
+      "id": 4,
+      "title": "Início das aulas de música",
+      "description": "",
+      "date": "12/02/2022",
+      "hour": "",
+      "backgroundColor": "#E81613"
+    },
+    {
+      "id": 5,
+      "title": "Comprar pão",
+      "description": "",
+      "date": "",
+      "hour": "05:00",
+      "backgroundColor": "#424242"
+    }
+  ]
+}

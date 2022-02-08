@@ -8,25 +8,14 @@
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="16dp"
-    app:cardElevation="4dp">
+    app:cardElevation="4dp"
+    tools:cardBackgroundColor="@sample/sampleTasks.json/tasks/backgroundColor"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_menu"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textStyle="bold"
-            tools:text="Hello World" />
 
         <ImageButton
             android:id="@+id/btn_menu"
@@ -41,17 +30,30 @@
             />
 
         <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_menu"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textStyle="bold"
+            tools:text="@sample/sampleTasks.json/tasks/title" />
+
+        <TextView
             android:id="@+id/tv_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title"
-            android:maxLines="4"
-            android:ellipsize="end"
-            tools:text="Criar um aplicativo To Do \nNova linha 1
-            \nNova linha 2\nNova linha 3\nNova linha 4"
-            />
-        
+            android:autoLink="web|phone"
+            android:textColorLink="@color/link"
+            android:linksClickable="false"
+            tools:text="@sample/sampleTasks.json/tasks/description" />
+
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
@@ -60,7 +62,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_description"
             android:layout_marginTop="4dp"
             android:textSize="12sp"
-            tools:text="15/05/2022"
+            tools:text="@sample/sampleTasks.json/tasks/date"
             />
 
         <TextView
@@ -71,10 +73,8 @@
             app:layout_constraintTop_toTopOf="@id/tv_date"
             android:layout_marginStart="8dp"
             android:textSize="12sp"
-            tools:text="20:00"
+            tools:text="@sample/sampleTasks.json/tasks/hour"
             />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
