@@ -1,6 +1,8 @@
 package br.com.dio.todolist.util
 
-import br.com.dio.todolist.R
+import android.annotation.SuppressLint
+import android.util.Log
+import android.widget.PopupMenu
 import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,12 +22,19 @@ fun Date.formatDate(): String {
     return SimpleDateFormat(pattern, locale).format(this)
 }
 
-fun String.getRes(): Int {
-    return when (this) {
-        "yellow" -> R.color.yellow
-        //"green" -> R.color.green
-        //"blue" -> R.color.blue
-        //"red" -> R.color.red
-        else -> R.color.transparent
+@SuppressLint("DiscouragedPrivateApi")
+fun PopupMenu.showWithIcons() {
+    try {
+        val fieldMPopupMenu = PopupMenu::class.java.getDeclaredField("mPopup")
+        fieldMPopupMenu.isAccessible = true
+        val mPopupMenu = fieldMPopupMenu.get(this)
+        mPopupMenu.javaClass
+            .getDeclaredMethod("setForceShowIcon", Boolean::class.java)
+            .invoke(mPopupMenu, true)
+
+    } catch (ex: Exception) {
+        Log.e("myTag", "Error showing menu icons.", ex)
+    } finally {
+        this.show()
     }
 }

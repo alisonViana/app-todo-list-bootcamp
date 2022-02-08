@@ -12,6 +12,8 @@ class MainViewModel(
     private val taskRepository: TaskRepository
 ): ViewModel() {
 
+    var filter = "no_filter"
+
     fun getAllTasks(): LiveData<List<Task>>{
         return taskRepository.getAll().asLiveData()
     }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/no_filter"
+        android:title="@string/label_remove_filter"
+        android:icon="@drawable/ic_no_filter"
+        />
+    <item
+        android:id="@+id/color_yellow"
+        android:title="@string/color_yellow"
+        android:icon="@drawable/shape_square_yellow"
+        />
+    <item
+        android:id="@+id/color_green"
+        android:title="@string/color_green"
+        android:icon="@drawable/shape_square_green"
+        />
+    <item
+        android:id="@+id/color_blue"
+        android:title="@string/color_blue"
+        android:icon="@drawable/shape_square_blue"
+        />
+    <item
+        android:id="@+id/color_red"
+        android:title="@string/color_red"
+        android:icon="@drawable/shape_square_red"
+        />
+    <item
+        android:id="@+id/color_transparent"
+        android:title="@string/color_transparent"
+        android:icon="@drawable/ic_no_color"
+        />
+
+</menu>

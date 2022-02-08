@@ -2,7 +2,7 @@
 
     <string name="app_name">To do List</string>
 
-    <!-- Label -->
+    <!-- Labels -->
     <string name="label_tasks">Tarefas</string>
     <string name="label_new_task">Nova Tarefa</string>
     <string name="label_save_task">Salvar Tarefa</string>
@@ -17,15 +17,24 @@
     <string name="label_yes">Sim</string>
     <string name="label_no">Não</string>
     <string name="label_ok">OK</string>
+    <string name="label_remove_filter">Remover filtro</string>
 
-    <!-- Message -->
+    <!-- Messages -->
     <string name="dialog_discard_title">Descartar alterações?</string>
     <string name="dialog_discard_message">Deseja voltar e descartar as alterações realizadas?</string>
     <string name="dialog_delete_message">Deseja excluir esta tarefa?</string>
     <string name="snackbar_blank_message">A tarefa precisa ter um título ou uma descrição.</string>
     <string name="toast_saved_task_message">Tarefa salva!</string>
 
-    <!-- Description -->
+    <!-- Descriptions -->
     <string name="description_btn_menu">menu button</string>
+    <string name="label_filter">Filtrar</string>
+
+    <!-- Colors -->
+    <string name="color_transparent">Sem cor</string>
+    <string name="color_yellow">Amarelo</string>
+    <string name="color_green">Verde</string>
+    <string name="color_blue">Azul</string>
+    <string name="color_red">Vermelho</string>
 
 </resources>

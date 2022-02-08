@@ -9,10 +9,10 @@ import org.koin.dsl.module
 object UtilModule {
 
     fun load(){
-        loadKoinModules(colorUtilMdules())
+        loadKoinModules(colorUtilModules())
     }
 
-    private fun colorUtilMdules(): Module {
+    private fun colorUtilModules(): Module {
         return module {
             factory {
                 GetColorUtil(androidContext())

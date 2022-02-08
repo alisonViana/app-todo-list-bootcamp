@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.widget.doAfterTextChanged
 import br.com.dio.todolist.R
 import br.com.dio.todolist.data.model.Task
 import br.com.dio.todolist.databinding.ActivityDetailBinding
@@ -50,7 +51,7 @@ class DetailActivity : AppCompatActivity() {
         binding.tilDescription.text = task.description
         binding.tilDate.text = task.date
         binding.tilHour.text = task.hour
-        selectBackgroundColor(task.backgroundColor)
+        selectBackgroundColor(task.backgroundColor, false)
 
     }
 
@@ -59,6 +60,8 @@ class DetailActivity : AppCompatActivity() {
 
         binding.tilDate.editText?.setOnClickListener { pickDate() }
         binding.tilHour.editText?.setOnClickListener { pickHour() }
+        binding.tilTitle.editText?.doAfterTextChanged { setSaveButton()}
+        binding.tilDescription.editText?.doAfterTextChanged { setSaveButton()}
 
         binding.btnTransparent.setOnClickListener { selectBackgroundColor(Colors.Transparent.string) }
         binding.btnYellow.setOnClickListener { selectBackgroundColor(Colors.Yellow.string) }
@@ -78,6 +81,8 @@ class DetailActivity : AppCompatActivity() {
             binding.tilDate.text = Date(it + rawOffset).formatDate()
         }
         datePicker.show(supportFragmentManager, "DATE_PICKER_TAG")
+
+        setSaveButton()
     }
 
     private fun pickHour() {
@@ -89,11 +94,17 @@ class DetailActivity : AppCompatActivity() {
             binding.tilHour.text = "%02d:%02d".format(timerPicker.hour, timerPicker.minute)
         }
         timerPicker.show(supportFragmentManager, "TIME_PICKER_TAG")
+
+        setSaveButton()
     }
 
-    private fun selectBackgroundColor(color: String) {
+    private fun setSaveButton() {
+        val condition = binding.tilTitle.text.isNotBlank() or binding.tilDescription.text.isNotBlank()
+        binding.btnSave.isEnabled = condition
+    }
+
+    private fun selectBackgroundColor(color: String, isChange: Boolean = true) {
         uncheckAll()
-        viewModel.backgroundColor = color
 
         when (color) {
             Colors.Transparent.string -> binding.btnTransparent.isChecked = true
@@ -105,6 +116,9 @@ class DetailActivity : AppCompatActivity() {
 
         val colorInt = getColorUtil.getColorFromString(color)
         binding.root.setBackgroundColor(colorInt)
+        viewModel.backgroundColor = color
+
+        if (isChange) setSaveButton()
     }
 
     private fun uncheckAll() {

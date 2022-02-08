@@ -11,7 +11,8 @@ class GetColorUtil(private val context: Context) {
             Colors.Green.string -> context.getColor(R.color.green)
             Colors.Blue.string -> context.getColor(R.color.blue)
             Colors.Red.string -> context.getColor(R.color.red)
-            else -> context.getColor(R.color.transparent)
+            Colors.Transparent.string -> context.getColor(R.color.transparent)
+            else -> context.getColor(R.color.icon_color)
         }
     }
 }
