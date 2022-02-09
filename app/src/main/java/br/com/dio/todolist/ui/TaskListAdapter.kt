@@ -13,7 +13,7 @@ import br.com.dio.todolist.util.GetColorUtil
 
 class TaskListAdapter(
     private val getColorUtil: GetColorUtil
-): ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBackTask()){
+): ListAdapter<Task, TaskListAdapter.ViewHolder>(DiffCallBack()){
 
     var setOnMenuClick: (View, Task) -> Unit = {_, _ ->}
     var setOnCardClick: (Task) -> Unit = {}
@@ -53,7 +53,7 @@ class TaskListAdapter(
 
 }
 
-class DiffCallBackTask: DiffUtil.ItemCallback<Task>() {
+class DiffCallBack: DiffUtil.ItemCallback<Task>() {
     override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem == newItem
     override fun areContentsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
 }
