@@ -8,6 +8,7 @@
 
     <color name="link">#0907A3</color>
     <color name="icon_color">#171717</color>
+    <color name="ic_launcher_background">#FFC114</color>
 
     <color name="yellow">#FFC114</color>
     <color name="green">#00D61F</color>
